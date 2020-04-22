@@ -19,4 +19,4 @@ RUN mkdir -p /curl/usr/local/bin \
     && cp /out/curl /curl/usr/local/bin
 
 FROM alpine
-COPY --from=0 /curl /
+COPY --from=0 /curl /curl

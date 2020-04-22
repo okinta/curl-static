@@ -20,4 +20,4 @@ RUN mkdir -p /curl/usr/local/bin \
     && cp /etc/ssl/certs/ca-certificates.crt /curl/etc/ssl/certs/ca-certificates.crt
 
 FROM ubuntu:$UBUNTU_VERSION
-COPY --from=0 /curl /
+COPY --from=0 /curl /curl
