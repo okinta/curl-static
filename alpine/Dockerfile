@@ -9,6 +9,7 @@ RUN apk add \
     openssl-dev \
     openssl-libs-static file
 
+# Build curl
 COPY build.sh /build.sh
 RUN ./build.sh
 

@@ -1,9 +1,29 @@
 # README
 
-Provides statically linked curl binaries for docker.
+Provides statically linked curl binaries for containers. This provides the
+advantage of allowing usage of curl without installing unnecessary packages or
+using package management systems.
 
-## Alpine
+## Usage
 
-To build for alpine, run:
+Containers are published with the compiled curl binaries. As an example, to
+pull curl inside your container, you can use the following in your Dockerfile:
 
-    docker build -t curl-static -f alpine/Dockerfile .
+    FROM ubuntu
+    COPY --from=okinta/curl-static:ubuntu /usr/local/bin/curl /usr/local/bin/curl
+
+`curl` will now be available for use within your container.
+
+## Development
+
+### Alpine
+
+To build for Alpine, run:
+
+    docker build -t okinta/curl-static:alpine -f alpine/Dockerfile .
+
+### Ubuntu
+
+To build for Ubuntu, run:
+
+    docker build -t okinta/curl-static:ubuntu -f ubuntu/Dockerfile .
