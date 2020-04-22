@@ -2,12 +2,13 @@ FROM alpine
 
 # Install dependencies
 RUN apk add \
+    file \
     gcc \
     gnupg \
     make \
     musl-dev \
     openssl-dev \
-    openssl-libs-static file
+    openssl-libs-static
 
 # Build curl
 COPY build.sh /build.sh
