@@ -13,6 +13,11 @@ ENV LIBS=-ldl
 COPY build.sh /build.sh
 RUN ./build.sh
 
+# Prepare for distribution
+RUN mkdir -p /curl/usr/local/bin \
+    && cp /out/curl /curl/usr/local/bin \
+    && mkdir -p /curl/etc/ssl/certs \
+    && cp /etc/ssl/certs/ca-certificates.crt /curl/etc/ssl/certs/ca-certificates.crt
+
 FROM ubuntu:$UBUNTU_VERSION
-COPY --from=0 /out/curl /usr/local/bin
-COPY --from=0 /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+COPY --from=0 /curl /

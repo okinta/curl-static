@@ -14,5 +14,9 @@ RUN apk add \
 COPY build.sh /build.sh
 RUN ./build.sh
 
+# Prepare for distribution
+RUN mkdir -p /curl/usr/local/bin \
+    && cp /out/curl /curl/usr/local/bin
+
 FROM alpine
-COPY --from=0 /out/curl /usr/local/bin
+COPY --from=0 /curl /

@@ -10,7 +10,7 @@ Containers are published with the compiled curl binaries. As an example, to
 pull curl inside your container, you can use the following in your Dockerfile:
 
     FROM ubuntu
-    COPY --from=okinta/curl-static:ubuntu /usr/local/bin/curl /usr/local/bin/curl
+    COPY --from=okinta/curl-static:ubuntu /curl /
 
 `curl` will now be available for use within your container.
 
