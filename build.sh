@@ -43,16 +43,12 @@ conditional_fetch "${TARBALL_URL}.asc" "${TARBALL_PATH}.asc"
 conditional_fetch "${TARBALL_URL}" "${TARBALL_PATH}"
 
 echo "***Validating source..."
-apk add gnupg
 gpg --import --always-trust ${GPG_KEY_PATH}
 gpg --verify ${TARBALL_PATH}.asc ${TARBALL_PATH}
 
 echo "***Unpacking source..."
 tar xfJ ${TARBALL_PATH}
 cd curl-*
-
-echo "***Installing build dependencies..."
-apk add gcc make musl-dev openssl-dev openssl-libs-static file
 
 echo "***configuring..."
 ./configure --disable-shared --with-ca-fallback
