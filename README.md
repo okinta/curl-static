@@ -14,6 +14,11 @@ pull curl inside your container, you can use the following in your Dockerfile:
 
 `curl` will now be available for use within your container.
 
+## Known Bugs
+
+* Currently if you try to set curl to follow redirects via `curl -L`, it
+results in a segmentation fault
+
 ## Development
 
 ### Alpine
